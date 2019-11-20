@@ -1,0 +1,32 @@
+body {
+  background: black;
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+  background: rgb(201, 198, 198);
+  color: black;
+}
+p {
+  border: 2px purple solid;
+  width: 800px;
+  padding: 10px;
+  text-align: center;
+}
+
+p:hover {
+  font-size: 120%;
+}
+li {
+  border: 2px solid purple;
+  list-style-type: none;
+  padding: 10px;
+}
+li:hover {
+  background: purple;
+  color: white;
+}
