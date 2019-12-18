@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+header {
+  width: 100%;
+  height: 50px;
+  background: black;
+  box-shadow: 2px 2px 4px #413f3f;
+}
+#banniere {
+  width: 1000px;
+  height: 500px;
+  background: url("images/b1.jpg") center no-repeat;
+  background-size: cover;
+  margin: 0px auto;
+  display: flex;
+}
+
+#mot {
+  width: 1000px;
+  min-height: 400px;
+  margin: 0px auto;
+  box-shadow: 1px 1px 20px black;
+}
+footer {
+  width: 100%;
+  height: 50px;
+  background: rgb(219, 216, 216);
+  color: rgb(109, 104, 104);
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 50px;
+}
+.esp {
+  height: 20px;
+  width: 100%;
+
+  clear: both;
+}
+
+#mot #gauche {
+  width: 60%;
+  height: 500px;
+  float: left;
+  padding: 20px;
+  box-sizing: border-box;
+  border-right: 2px solid grey;
+}
+
+#mot #droite {
+  width: 40%;
+  height: 500px;
+  float: right;
+  display: flex;
+}
+
+#gauche img {
+  max-width: 100%;
+  max-height: 100%;
+}
+#contenu {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 30px;
+  font-family: 1.1em;
+}
+#droite h1 {
+  color: rgb(87, 80, 80);
+  line-height: 60px;
+}
+#droite p {
+  text-align: justify;
+  text-indent: 30px;
+}
+
+#banniere h2 {
+  color: while;
+  width: 200px;
+  text-align: center;
+  margin: auto;
+}
