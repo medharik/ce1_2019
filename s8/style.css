@@ -41,24 +41,25 @@ footer {
 }
 
 #mot #gauche {
-  width: 60%;
+  width: 40%;
   height: 500px;
   float: left;
-  padding: 20px;
   box-sizing: border-box;
   border-right: 2px solid grey;
+  display: flex;
 }
 
 #mot #droite {
-  width: 40%;
+  width: 60%;
   height: 500px;
   float: right;
   display: flex;
 }
 
 #gauche img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 95%;
+  max-height: 95%;
+  margin: auto;
 }
 #contenu {
   width: 80%;
