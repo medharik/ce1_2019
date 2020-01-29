@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#d1 {
+  background: red;
+}
+
+#d2 {
+  background: green;
+}
+
+#d3 {
+  background: blue;
+}
+.b {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+}
+#parent {
+  width: 500px;
+  height: 300px;
+  margin: auto;
+  background: purple;
+}
+#enfant {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  background: deeppink;
+}

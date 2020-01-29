@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#menu {
+  width: 100%;
+  height: 60px;
+  background: rgba(100, 148, 237, 0.411);
+  position: fixed;
+  top: 0;
+}
+#main {
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+#intro {
+  background: yellow;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+#intro video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#content {
+  width: 800px;
+  height: 200px;
+  margin: auto;
+  color: white;
+  font-size: 300%;
+  text-align: center;
+}
