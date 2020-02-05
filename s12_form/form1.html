@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>les bases des formulaires HTML</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Exemple 1 :</h2>
+    <form action="">
+      Login : <input type="text" /> Mot de passe : <input type="password" />
+
+      <button>Valider</button>
+    </form>
+    <h2>Exemple 2 :</h2>
+    <form action="http://google.fr">
+      Recherche : <input type="text" name="q" />
+      <button>Ok</button>
+    </form>
+    <h2>Exemple 3 :</h2>
+    <form action="reception.html">
+      <table border="0" align="center">
+        <tr>
+          <td>Login :</td>
+
+          <td>
+            <input
+              required
+              type="text"
+              name="login"
+              placeholder="Votre Email"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Mot de passe :</td>
+
+          <td>
+            <input type="password" name="passe" placeholder="Mot de passe " />
+          </td>
+        </tr>
+        <tr>
+          <td>Sexe :</td>
+
+          <td>
+            <label for="homme">Homme</label>
+            <input type="radio" name="hf" id="homme" value="homme" />
+            <label for="femme">Femme</label>
+            <input type="radio" name="hf" id="femme" value="femme" />
+          </td>
+        </tr>
+        <tr>
+          <td>Langues :</td>
+          <td>
+            <label for="fr">Francais</label>
+            <input type="checkbox" name="lg1" id="fr" value="francais" />
+
+            <label for="en">Analais</label>
+            <input type="checkbox" name="lg1" id="en" value="anglais" />
+
+            <label for="ar">Arabe</label>
+            <input type="checkbox" name="lg1" id="ar" value="arabe" />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button>Valider</button></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
