@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>les formulaires : la suite</title>
+  </head>
+  <body>
+    <h2>Formulaire complet :</h2>
+    <form action="https:google.fr">
+      <table border="0" align="center">
+        <tr>
+          <td><label for="np">Nom & Prenom (*): </label></td>
+          <td>
+            <input
+              type="text"
+              name="np"
+              id="np"
+              autocomplete="off"
+              required
+              placeholder="Votre nom ..."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Email">Email : </label></td>
+          <td>
+            <input type="email" name="email" id="email" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="passe">Mot de passe : </label></td>
+          <td>
+            <input type="password" name="passe" id="passe" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="np"> Situation familiale :</label></td>
+          <td>
+            <label for="c">Celibataire </label>
+            <input type="radio" name="st" id="c" value="Celibataire" checked />
+            <label for="m">Marie </label>
+            <input type="radio" name="st" id="m" value="marie" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="ne"> Nombre d'enfants :</label></td>
+          <td>
+            <input type="number" name="ne" id="ne" min="0" max="10" step="2" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="col"> Couleurs preferees :</label></td>
+          <td>
+            <label for="red">Rouge </label>
+            <input type="checkbox" name="col" id="red" value="rouge" />
+            <label for="g">Vert </label>
+            <input type="checkbox" name="col" id="g" value="vert" />
+            <label for="b">Bleu </label>
+            <input type="checkbox" name="col" id="b" value="bleu" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="ville"> Ville :</label></td>
+          <td>
+            <select name="ville" id="ville" multiple>
+              <option value="casablanca">Casa</option>
+              <option value="rabat">rabat</option>
+              <option value="Fes">Fes</option>
+              <option value="" selected>...</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="adresse"> Adresse :</label></td>
+          <td>
+            <textarea name="adresse" id="adresse" cols="30" rows="3"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="dn"> Date de naissance </label></td>
+          <td>
+            <input type="date" name="dn" id="dn" />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button type="reset">Annuler</button>
+            <button type="submit">Valider</button>
+            <button type="button">RIEN</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
