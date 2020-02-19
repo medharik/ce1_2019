@@ -44,7 +44,9 @@
       function calculer_ttc() {
         let champs_prix = document.getElementById("prix");
         let champs_qte = document.getElementById("qte");
-        let ttc = champs_prix.value * champs_qte.value;
+        let prix = parseFloat(champs_prix.value);
+        let qte = parseFloat(champs_qte.value);
+        let ttc = prix * qte;
         alert(" le ttc est  " + ttc + " DHS");
       }
     </script>
