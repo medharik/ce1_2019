@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>intro JAVASCRIPT</title>
+  </head>
+  <body>
+    <marquee
+      style="background: red;color:white;font-size:20px"
+      onmouseover="stop()"
+      onmouseout="start()"
+    >
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur ipsa
+      laborum ea repudiandae, blanditiis deleniti dolor! Asperiores rerum
+      temporibus modi quaerat officia vel ullam nam soluta, odit repudiandae
+      possimus mollitia?
+    </marquee>
+    <hr />
+    <form action="">
+      <table align="center">
+        <tr>
+          <td>Prix TC :</td>
+          <td>
+            <input type="text" name="prix" id="prix" />
+          </td>
+        </tr>
+        <tr>
+          <td>Quantité :</td>
+          <td>
+            <input type="text" name="qte" id="qte" />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button type="button" onclick="calculer_ttc()">Calculer TTC</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <script>
+      function calculer_ttc() {
+        let champs_prix = document.getElementById("prix");
+        let champs_qte = document.getElementById("qte");
+        let ttc = champs_prix.value * champs_qte.value;
+        alert(" le ttc est  " + ttc + " DHS");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro 2 JS</title>
+  </head>
+  <body>
+    <form action="">
+      <table>
+        <tr>
+          <td>Prix :</td>
+          <td><input type="number" name="prix" id="prix" /></td>
+        </tr>
+        <tr>
+          <td>Taux de reduction :</td>
+          <td><input type="number" name="taux" id="taux" /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button type="button" onclick="calculer_taux()">
+              Calculer le prix reduit
+            </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <script>
+      function calculer_taux() {
+        let iprix = document.getElementById("prix");
+        let itaux = document.getElementById("taux");
+        let prix = parseFloat(iprix.value);
+        let taux = parseFloat(itaux.value);
+        let prix_reduit = prix - (prix * taux) / 100;
+
+        alert(
+          "le prix " +
+            prix +
+            " DHS apres reduction de " +
+            taux +
+            "% est " +
+            prix_reduit +
+            " DHS"
+        );
+      }
+    </script>
+  </body>
+</html>
