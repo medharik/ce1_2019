@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP 4 : JAVSCRIPT</title>
+  </head>
+  <body style="text-align:center">
+    <h3 style="text-align: center;">Les conditions</h3>
+    <div id="c">
+      <form action="">
+        <table align="center">
+          <tr>
+            <td><label for="p">Prix : </label></td>
+            <td><input type="text" name="p" id="p" /></td>
+          </tr>
+          <tr>
+            <td><label for="t">Taux : </label></td>
+            <td><input type="text" name="t" id="t" /></td>
+          </tr>
+          <tr>
+            <td><label for="">Type de taux : </label></td>
+            <td>
+              <label for="aug">Augmentation</label>
+              <input type="radio" name="v" id="aug" value="augmentation" />
+              <label for="red">Reduction </label>
+              <input type="radio" name="v" id="red" value="reduction" />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button type="button" onclick="calculer()">Calculer</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <div id="resultat"></div>
+      <img src="" alt="" id="photo" height="50" />
+    </div>
+
+    <script>
+      function calculer() {
+        //recuperer les balises html par leurs id et les mettre dans des variables
+        var prix = document.getElementById("p").value;
+        var taux = document.getElementById("t").value;
+        var aug = document.getElementById("aug");
+        var red = document.getElementById("red");
+        var photo = document.getElementById("photo");
+        var resultat = document.getElementById("resultat");
+        var prix_final = 0;
+        //   console.log("augmentation", aug.checked);
+        if (isNaN(prix) || isNaN(taux)) {
+          resultat.innerHTML = "Ce n'est pas un nombre";
+          resultat.style.color = "red";
+          photo.src = "ko.jpg";
+        } else if (aug.checked) {
+          prix_final = prix * (1 + taux / 100);
+          resultat.innerHTML =
+            "le prix apres une augmetation de " +
+            taux +
+            " % est " +
+            prix_final +
+            " DHS";
+          resultat.style.color = "green";
+          photo.src = "ok.jpg";
+        } else if (red.checked) {
+          prix_final = prix * (1 - taux / 100);
+          resultat.innerHTML =
+            "le prix apres une reduction  de " +
+            taux +
+            " % est " +
+            prix_final +
+            " DHS";
+          resultat.style.color = "green";
+          photo.src = "ok.jpg";
+        } else {
+          alert("veuillez choisir le type de variation");
+        }
+      }
+    </script>
+  </body>
+</html>
