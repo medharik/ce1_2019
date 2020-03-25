@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP 1 : GENERER UN NOMBRE ENTIER ALEATOIRE</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <button onclick="generer_entier(10)">GENERER</button>
+      <hr />
+      <div id="nombre_aleatoire1" class="e">5</div>
+      <div class="e" id="nombre_aleatoire2">7</div>
+      REPONSE : <input type="number" name="" id="rep_user" />
+      <button type="button" onclick="repondre()">Valider</button>
+      <div id="resultat"></div>
+    </div>
+
+    <script>
+      function generer_entier(max) {
+        // recuprer les balises html : div#nombre_aleatoire
+        let d1 = document.getElementById("nombre_aleatoire1");
+        let d2 = document.getElementById("nombre_aleatoire2");
+
+        //generer le nombre aleatoire (ramdon number)
+        let n1 = parseInt(Math.random() * max); // permet de generer un nombre aleatoire entre 0 et max
+        let n2 = parseInt(Math.random() * max); // permet de generer un nombre aleatoire entre 0 et max
+        // mettre ce nombre dans le le div nombre_aleatoire
+        d1.innerHTML = n1;
+        d2.innerHTML = n2;
+        if (rep_user == n1 * n2) {
+          r.innerHTML = "BONNE REPONSE";
+        } else {
+          r.innerHTML = "MAUVAISE REPONSE";
+        }
+      }
+
+      function repondre() {
+        let r = document.getElementById("resultat");
+        let rep_user = document.getElementById("rep_user").value;
+        let n1 = document.getElementById("nombre_aleatoire1").innerText;
+        let n2 = document.getElementById("nombre_aleatoire2").innerText;
+        console.log("n1 est " + n1);
+        console.log("n2 est " + n2);
+        console.log("rep_user est " + rep_user);
+        console.log("bonne reponse est  " + n1 * n2);
+        if (rep_user == n1 * n2) {
+          r.innerHTML = "BONNE REPONSE";
+        } else {
+          r.innerHTML = "MAUVAISE REPONSE";
+        }
+      }
+    </script>
+  </body>
+</html>
