@@ -8,10 +8,16 @@
   </head>
   <body>
     <div id="container">
+      <select id="op" onchange="changer_operation()">
+        <option value="/">Division</option>
+        <option value="+">Somme</option>
+        <option value="-">Soustraction</option>
+        <option value="*" selected>Produit</option>
+      </select>
       <button onclick="generer_entier(10)">GENERER</button>
       <hr />
-      <div id="nombre_aleatoire1" class="e">5</div>
-      <div class="e" id="nombre_aleatoire2">7</div>
+      <div id="nombre_aleatoire1" class="e">0</div>
+      <div class="e" id="nombre_aleatoire2">0</div>
       REPONSE : <input type="number" name="" id="rep_user" />
       <button type="button" onclick="repondre()">Valider</button>
       <div id="resultat"></div>
@@ -36,11 +42,12 @@
         // mettre ce nombre dans le le div nombre_aleatoire
         d1.innerHTML = n1;
         d2.innerHTML = n2;
-        if (rep_user == n1 * n2) {
+        /*  if (rep_user == n1 * n2) {
           r.innerHTML = "BONNE REPONSE";
         } else {
           r.innerHTML = "MAUVAISE REPONSE";
         }
+      */
       }
 
       function repondre() {
@@ -50,12 +57,28 @@
         let n1 = document.getElementById("nombre_aleatoire1").innerText;
         let n2 = document.getElementById("nombre_aleatoire2").innerText;
         let im = document.getElementById("tof");
+        let op = document.getElementById("op").value;
         let div_score = document.getElementById("score");
         console.log("n1 est " + n1);
         console.log("n2 est " + n2);
         console.log("rep_user est " + rep_user);
         console.log("bonne reponse est  " + n1 * n2);
-        if (rep_user == n1 * n2) {
+        let bonne_reponse = 0;
+        if (op == "*") {
+          bonne_reponse = n1 * n2;
+        }
+        if (op == "+") {
+          bonne_reponse = parseInt(n1) + parseInt(n2);
+        }
+        if (op == "/") {
+          bonne_reponse = n1 / n2;
+        }
+        if (op == "-") {
+          bonne_reponse = n1 - n2;
+        }
+        //"4"+"4"="44"
+        //4+4=8
+        if (rep_user == bonne_reponse) {
           r.innerHTML = "BONNE REPONSE";
           im.src = "ok.png";
           score++;
@@ -64,8 +87,8 @@
           im.src = "error.png";
         }
         div_score.innerHTML =
-          (score / nombre_reponse) * 100 +
-          "%<br> / " +
+          (score / nombre_reponse) * 20 +
+          "/20<br> sur " +
           nombre_reponse +
           " Essai(s)";
         generer_entier(10);
