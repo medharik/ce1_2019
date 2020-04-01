@@ -15,13 +15,20 @@
       REPONSE : <input type="number" name="" id="rep_user" />
       <button type="button" onclick="repondre()">Valider</button>
       <div id="resultat"></div>
+      <img src="" alt="" id="tof" />
+      Score :
+      <div id="score">
+        0
+      </div>
     </div>
 
     <script>
+      let d2 = document.getElementById("nombre_aleatoire2");
+      let d1 = document.getElementById("nombre_aleatoire1");
+      let score = 0;
+      let nombre_reponse = 0;
       function generer_entier(max) {
         // recuprer les balises html : div#nombre_aleatoire
-        let d1 = document.getElementById("nombre_aleatoire1");
-        let d2 = document.getElementById("nombre_aleatoire2");
 
         //generer le nombre aleatoire (ramdon number)
         let n1 = parseInt(Math.random() * max); // permet de generer un nombre aleatoire entre 0 et max
@@ -37,19 +44,31 @@
       }
 
       function repondre() {
+        nombre_reponse++;
         let r = document.getElementById("resultat");
         let rep_user = document.getElementById("rep_user").value;
         let n1 = document.getElementById("nombre_aleatoire1").innerText;
         let n2 = document.getElementById("nombre_aleatoire2").innerText;
+        let im = document.getElementById("tof");
+        let div_score = document.getElementById("score");
         console.log("n1 est " + n1);
         console.log("n2 est " + n2);
         console.log("rep_user est " + rep_user);
         console.log("bonne reponse est  " + n1 * n2);
         if (rep_user == n1 * n2) {
           r.innerHTML = "BONNE REPONSE";
+          im.src = "ok.png";
+          score++;
         } else {
           r.innerHTML = "MAUVAISE REPONSE";
+          im.src = "error.png";
         }
+        div_score.innerHTML =
+          (score / nombre_reponse) * 100 +
+          "%<br> / " +
+          nombre_reponse +
+          " Essai(s)";
+        generer_entier(10);
       }
     </script>
   </body>
