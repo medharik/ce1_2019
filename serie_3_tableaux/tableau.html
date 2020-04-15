@@ -11,11 +11,16 @@
     Rechercher une valeur par indice: <input type="text" id="indice" />
     <button onclick=" rechercher_par_indice()">Ok</button>
     <div id="resultat"></div>
+    <h3>Exercice 2 :</h3>
+
+    Combien de valeurs < <input type="text" id="val2" />
+    <button onclick=" compter_val_min()">Ok</button>
+    <div id="resultat2"></div>
 
     <script>
       // tableaux : ensemble de donnees indexees (numerote de 0 )
       // chaque tableau est caracterise par une taille ou longueur (length ou size ) = nombre de cases ou de valeurs dans ce tableau
-      let tab = [1, 3, 9, 100];
+      let tab = [1, 3, 1, 9, 100];
 
       function decourvrir() {
         console.log("taille du tableaux est " + tab.length);
@@ -51,6 +56,18 @@
           r.innerHTML = "Element d'indice  " + ind.value + " est introuvable ";
           r.style.color = "red";
         }
+      }
+
+      function compter_val_min() {
+        let val = document.getElementById("val2").value;
+        let r = document.getElementById("resultat2");
+        let cpt = 0;
+        for (let i = 0; i < tab.length; i++) {
+          if (tab[i] <= val) {
+            cpt++;
+          }
+        }
+        r.innerHTML = "nombre de valeur < " + val + " est : " + cpt;
       }
     </script>
   </body>

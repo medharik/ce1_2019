@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body onload="afficher_tableau()">
+    <div id="container" style="text-align: center;">
+      <fieldset>
+        <legend align="center">Ajout de produit :</legend>
+        Produit : <input type="text" id="produit" />
+        <button onclick="ajouter_produit()">Ok</button>
+      </fieldset>
+      <table align="center" border="1" width="300">
+        <thead>
+          <tr>
+            <th>indice</th>
+            <th>Produit</th>
+          </tr>
+        </thead>
+        <tbody id="corps"></tbody>
+      </table>
+    </div>
+
+    <script src="tp1.js"></script>
+  </body>
+</html>
