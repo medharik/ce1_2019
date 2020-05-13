@@ -9,7 +9,15 @@
     <div id="container" style="text-align: center;">
       <fieldset>
         <legend align="center">Ajout de produit :</legend>
-        Produit : <input type="text" id="produit" />
+        Produit : <input type="text" id="produit" /> Prix :
+        <input type="text" id="prix" />
+        Marque :
+        <select name="marque" id="marque">
+          <option value="">...</option>
+          <option value="hp">HP</option>
+          <option value="dell">DELL</option>
+          <option value="sony">SONY</option>
+        </select>
         <button onclick="ajouter_produit()">Ok</button>
       </fieldset>
       <table align="center" border="1" width="300">
@@ -17,12 +25,14 @@
           <tr>
             <th>indice</th>
             <th>Produit</th>
+            <th>Prix</th>
+            <th>Marque</th>
+            <th>Logo</th>
           </tr>
         </thead>
         <tbody id="corps"></tbody>
       </table>
     </div>
-
     <script src="tp1.js"></script>
   </body>
 </html>
