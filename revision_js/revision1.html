@@ -8,17 +8,38 @@
   <body>
     <div style="text-align: center;">
       Libelle : <input autocomplete="off" type="text" id="libelle" /> Prix :
-      <input type="text" id="prix" /> Marque :
+      <input type="text" id="prix" /> Categorie :
       <select id="categorie">
         <option value="1">PC PORTABLE </option>
         <option value="2">PC BUREAU</option>
       </select>
-      <button>Valider</button>
+      <button onclick="afficher()">Valider</button>
     </div>
     <div id="produit" style="text-align: center;">
       <img id="photo" src="images/bureau.jpg" alt="" />
-      <h4 id="libelle">hp</h4>
-      <h5 id="prix">300$</h5>
+      <h4 id="zone_libelle">hp</h4>
+      <h5 id="zone_prix">300$</h5>
     </div>
+
+    <script>
+      function afficher() {
+        //recuperer les champs (par id ) dans des variables JS
+        let libelle = document.getElementById("libelle");
+        let prix = document.getElementById("prix");
+        let categorie = document.getElementById("categorie");
+        // h4
+        let zone_libelle = document.getElementById("zone_libelle");
+        let zone_prix = document.getElementById("zone_prix");
+        let photo = document.getElementById("photo");
+
+        zone_libelle.innerHTML = libelle.value;
+        zone_prix.innerHTML = prix.value + "$";
+        if (categorie.value == 1) {
+          photo.src = "images/portable.jpg";
+        } else {
+          photo.src = "images/bureau.jpg";
+        }
+      }
+    </script>
   </body>
 </html>
