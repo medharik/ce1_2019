@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Facture en ligne (version 1.0)
+    </title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <fieldset class="group">
+      <legend>Nouveau produit</legend>
+      <input type="text" placeholder="Libellé" id="libelle" />
+      <input type="text" placeholder="prix" id="prix" />
+      <input type="text" placeholder="quantité" id="qte" />
+      <button onclick="ajouter()">Ajouter</button>
+    </fieldset>
+    <hr />
+    <br />
+    <table class="table" id="table_facture">
+      <thead>
+        <tr>
+          <th>Libellé</th>
+          <th>Prix</th>
+          <th>Quantité</th>
+          <th>Total ligne</th>
+        </tr>
+      </thead>
+      <tbody id="corps"></tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>TTC :</td>
+          <td><span id="ttc">0</span>DHS</td>
+        </tr>
+      </tfoot>
+    </table>
+    <script>
+      let ttc = 0;
+
+      function ajouter() {
+        let libelle = document.getElementById("libelle");
+        let prix = document.getElementById("prix");
+        let qte = document.getElementById("qte");
+        let corps = document.getElementById("corps");
+        let span_ttc = document.getElementById("ttc");
+        let total_ligne = prix.value * qte.value;
+        //let ligne ="<tr> <td>"+libelle.value+"</td><td>"+prix.value+"</td><td>"+qte.value+"</td> <td>"+total_ligne+"</td></tr>";
+        let ligne =
+          "<tr> <td>" +
+          libelle.value +
+          "</td><td>" +
+          prix.value +
+          "</td><td>" +
+          qte.value +
+          "</td> <td>" +
+          total_ligne +
+          "</td></tr>";
+        corps.innerHTML += ligne;
+        ttc += total_ligne;
+        span_ttc.innerHTML = ttc;
+      }
+    </script>
+  </body>
+</html>
