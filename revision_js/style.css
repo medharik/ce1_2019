@@ -30,3 +30,39 @@
   text-align: right;
   color: rgba(39, 39, 219, 0.822);
 }
+.centrer {
+  margin: auto;
+  width: 90%;
+}
+.div_impression {
+  text-align: center;
+
+  margin: 10px auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.div_impression button {
+  background: deepskyblue;
+  color: white;
+  font-size: 1.2em;
+  padding: 4px;
+  width: 200px;
+}
+
+@media print {
+  .group,
+  button {
+    display: none;
+  }
+  input,
+  textarea {
+    border: none;
+  }
+  html,
+  body {
+    padding-top: 5mm;
+    width: 210mm;
+    height: 297mm;
+  }
+}

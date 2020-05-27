@@ -9,16 +9,45 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <table class="centrer" border="0">
+      <tr>
+        <td><img src="images/logo_png.PNG" alt="" /></td>
+        <td align="right" width="50%">
+          Facture numéro : <input type="text" id="numero" />
+        </td>
+      </tr>
+    </table>
+    <table class="centrer" border="0" align="center" width="90%">
+      <tr>
+        <td></td>
+        <td width="40%" align="left">Facture pour :</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td align="right">
+          <textarea style="width: 100%;" name="" id="client" rows="4">
+          </textarea>
+        </td>
+      </tr>
+    </table>
+
     <fieldset class="group">
       <legend>Nouveau produit</legend>
       <input type="text" placeholder="Libellé" id="libelle" />
       <input type="text" placeholder="prix" id="prix" />
+
       <input type="text" placeholder="quantité" id="qte" />
       <button onclick="ajouter()">Ajouter</button>
+      <fieldset>
+        <label for="ht">HT</label>
+        <input type="radio" name="t" id="ht" value="ht" />
+        <label for="tc"> TC</label>
+        <input type="radio" name="t" id="tc" value="tc" checked />
+      </fieldset>
     </fieldset>
     <hr />
     <br />
-    <table class="table" id="table_facture">
+    <table class="table centrer" id="table_facture">
       <thead>
         <tr>
           <th>Libellé</th>
@@ -32,21 +61,39 @@
         <tr>
           <td></td>
           <td></td>
+          <td>THT :</td>
+          <td><span id="tht">0</span>DHS</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
           <td>TTC :</td>
           <td><span id="ttc">0</span>DHS</td>
         </tr>
       </tfoot>
     </table>
+    <div class="div_impression {">
+      <button onclick="imprimer()">Imprimer</button>
+    </div>
     <script>
       let ttc = 0;
 
+      let somme_ligne = 0;
       function ajouter() {
         let libelle = document.getElementById("libelle");
         let prix = document.getElementById("prix");
         let qte = document.getElementById("qte");
         let corps = document.getElementById("corps");
         let span_ttc = document.getElementById("ttc");
-        let total_ligne = prix.value * qte.value;
+        let span_tht = document.getElementById("tht");
+        let tc = document.getElementById("tc");
+        let th = document.getElementById("ht");
+        let total_ligne = 0;
+
+        total_ligne = prix.value * qte.value;
+
+        somme_ligne += total_ligne;
+
         //let ligne ="<tr> <td>"+libelle.value+"</td><td>"+prix.value+"</td><td>"+qte.value+"</td> <td>"+total_ligne+"</td></tr>";
         let ligne =
           "<tr> <td>" +
@@ -59,8 +106,21 @@
           total_ligne +
           "</td></tr>";
         corps.innerHTML += ligne;
+
         ttc += total_ligne;
-        span_ttc.innerHTML = ttc;
+
+        if (th.checked) {
+          span_tht.innerHTML = somme_ligne;
+          span_ttc.innerHTML = (somme_ligne * 1.2).toFixed(2);
+        } else {
+          span_ttc.innerHTML = somme_ligne;
+          span_tht.innerHTML = (somme_ligne / 1.2).toFixed(2);
+        }
+
+        // ttc=tht *1.20 => tht=ttc/1.20
+      }
+      function imprimer() {
+        window.print();
       }
     </script>
   </body>
