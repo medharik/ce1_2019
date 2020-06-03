@@ -49,10 +49,16 @@
   padding: 4px;
   width: 200px;
 }
+#type {
+  text-align: center;
+  padding: 5px;
+  background: rgb(245, 243, 243);
+}
 
 @media print {
   .group,
-  button {
+  button,
+  #type {
     display: none;
   }
   input,

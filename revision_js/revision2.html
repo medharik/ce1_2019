@@ -9,18 +9,35 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="type">
+      Type du document :
+      <select id="type_doc" onchange="changer_type(this)">
+        <option value="Devis">Devis</option>
+        <option value="Facture" selected>Facture</option>
+        <option value="Commande">Commande</option>
+      </select>
+      Ou Autre :
+      <input
+        type="text"
+        id="autre"
+        onkeydown="changer_type(this)"
+        onkeyup="changer_type(this)"
+      />
+    </div>
     <table class="centrer" border="0">
       <tr>
         <td><img src="images/logo_png.PNG" alt="" /></td>
         <td align="right" width="50%">
-          Facture numéro : <input type="text" id="numero" />
+          <span class="sp"> Facture </span>
+          numéro :
+          <input type="text" id="numero" />
         </td>
       </tr>
     </table>
     <table class="centrer" border="0" align="center" width="90%">
       <tr>
         <td></td>
-        <td width="40%" align="left">Facture pour :</td>
+        <td width="40%" align="left"><span class="sp">Facture </span> Pour:</td>
       </tr>
       <tr>
         <td></td>
@@ -90,37 +107,69 @@
         let th = document.getElementById("ht");
         let total_ligne = 0;
 
-        total_ligne = prix.value * qte.value;
-
-        somme_ligne += total_ligne;
-
         //let ligne ="<tr> <td>"+libelle.value+"</td><td>"+prix.value+"</td><td>"+qte.value+"</td> <td>"+total_ligne+"</td></tr>";
-        let ligne =
-          "<tr> <td>" +
-          libelle.value +
-          "</td><td>" +
-          prix.value +
-          "</td><td>" +
-          qte.value +
-          "</td> <td>" +
-          total_ligne +
-          "</td></tr>";
-        corps.innerHTML += ligne;
 
-        ttc += total_ligne;
-
-        if (th.checked) {
-          span_tht.innerHTML = somme_ligne;
-          span_ttc.innerHTML = (somme_ligne * 1.2).toFixed(2);
+        // ajout de la ligne dans le corps du tableau (si prix est numerique):
+        if (!isNaN(prix.value) && !isNaN(qte.value)) {
+          total_ligne = prix.value * qte.value;
+          somme_ligne += total_ligne;
+          let ligne =
+            "<tr> <td>" +
+            libelle.value +
+            "</td><td>" +
+            prix.value +
+            "</td><td>" +
+            qte.value +
+            "</td> <td>" +
+            total_ligne +
+            "</td></tr>";
+          corps.innerHTML += ligne;
+          ttc += total_ligne;
+          if (th.checked) {
+            span_tht.innerHTML = somme_ligne;
+            span_ttc.innerHTML = (somme_ligne * 1.2).toFixed(2);
+          } else {
+            span_ttc.innerHTML = somme_ligne;
+            span_tht.innerHTML = (somme_ligne / 1.2).toFixed(2);
+          }
+        } else if (isNaN(prix.value)) {
+          alert("Erreur : le prix doit etre numerique");
+          prix.focus();
         } else {
-          span_ttc.innerHTML = somme_ligne;
-          span_tht.innerHTML = (somme_ligne / 1.2).toFixed(2);
+          alert("Erreur : la qte doit etre numerique");
+          qte.select();
         }
 
         // ttc=tht *1.20 => tht=ttc/1.20
       }
       function imprimer() {
         window.print();
+      }
+
+      function changer_type(s) {
+        let type_doc_num = document.getElementById("type_doc_num");
+        let sp1 = document.querySelector(".sp"); //selectionne le premier elelemt ayant la class = sp
+        let sp_all = document.querySelectorAll(".sp"); //selectionne  tous (tableau) les  elements ayant la class = sp
+        console.log("sssss ", s.value);
+        //  for (i = 0; i < sp_all.length; i++) {
+        //  sp_all[i].innerHTML = s.value;
+        // }
+        for (span of sp_all) {
+          // span = chaque case du tableau
+          span.innerHTML = s.value;
+          console.log("for of  : ", span);
+        }
+
+        // for (i in sp_all) {
+        // i =0, 1  (indice)
+        // console.log("for in  i : ", i);
+        //console.log("for in contenu : ", sp_all[i]);
+        // }
+        console.log("test 1", sp1);
+        console.log("test 2", sp_all);
+        console.log("span 3", sp_all);
+
+        //type_doc_num.innerHTML = s.value;
       }
     </script>
   </body>
