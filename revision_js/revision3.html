@@ -94,6 +94,9 @@
     </div>
     <script>
       let ttc = 0;
+      let tab_libelles = [];
+      let tab_prix = [];
+      let tab_qte = [];
 
       let somme_ligne = 0;
       function ajouter() {
@@ -106,20 +109,39 @@
         let tc = document.getElementById("tc");
         let th = document.getElementById("ht");
         let total_ligne = 0;
-
-        //let ligne ="<tr> <td>"+libelle.value+"</td><td>"+prix.value+"</td><td>"+qte.value+"</td> <td>"+total_ligne+"</td></tr>";
-
+        //let  ligne ="<tr> <td>"+libelle.value+"</td><td>"+prix.value+"</td><td>"+qte.value+"</td> <td>"+total_ligne+"</td></tr>";
+        //alert(tab_libelles.includes(libelle.value));
+        // if (!tab_libelles.includes(libelle.value)) {
+        // tab_libelles.push(libelle.value);
+        //}
         // ajout de la ligne dans le corps du tableau (si prix est numerique):
-        if (!isNaN(prix.value) && !isNaN(qte.value)) {
-          total_ligne = prix.value * qte.value;
+
+        //if(age> 12 && taille>1.4){
+        //        A;
+        //}else{
+        //B sera executé si age <= 12 OU (||) taille<=1.4
+        //}
+
+        console.log("tableau libelle ", tab_libelles);
+        if (!tab_libelles.includes(libelle.value)) {
+          // ajouter les libelles dans un tableau  Tab_libelle
+          tab_libelles.push(libelle.value);
+          // ajouter les prix dans un tableau  Tabl_prix
+          tab_prix.push(prix.value);
+          //ajouter les qtes dans tabl_qte
+          tab_qte.push(qte.value);
+        }
+        corps.innerHTML = "";
+        for (i = 0; i < tab_libelles.length; i++) {
+          total_ligne = tab_prix[i] * tab_qte[i];
           somme_ligne += total_ligne;
           let ligne =
             "<tr> <td>" +
-            libelle.value +
+            tab_libelles[i] +
             "</td><td>" +
-            prix.value +
+            tab_prix[i] +
             "</td><td>" +
-            qte.value +
+            tab_qte[i] +
             "</td> <td>" +
             total_ligne +
             "</td></tr>";
@@ -132,12 +154,6 @@
             span_ttc.innerHTML = somme_ligne;
             span_tht.innerHTML = (somme_ligne / 1.2).toFixed(2);
           }
-        } else if (isNaN(prix.value)) {
-          alert("Erreur : le prix doit etre numerique");
-          prix.focus();
-        } else {
-          alert("Erreur : la qte doit etre numerique");
-          qte.select();
         }
 
         // ttc=tht *1.20 => tht=ttc/1.20
