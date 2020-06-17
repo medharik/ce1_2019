@@ -54,6 +54,17 @@
       <input type="text" placeholder="prix" id="prix" />
 
       <input type="text" placeholder="quantité" id="qte" />
+      Type:
+      <select
+        id="select_categorie"
+        name="select_categorie"
+        class="select_categorie"
+      >
+        <option value="" selected>...</option>
+        <option value="images/pcb.jpg">DESKTOP</option>
+        <option value="images/pcp.jpg">PC PORTABLE</option>
+      </select>
+
       <button onclick="ajouter()">Ajouter</button>
       <fieldset>
         <label for="ht">HT</label>
@@ -67,9 +78,11 @@
     <table class="table centrer" id="table_facture">
       <thead>
         <tr>
+          <th>Photo</th>
           <th>Libellé</th>
           <th>Prix</th>
           <th>Quantité</th>
+
           <th>Total ligne</th>
         </tr>
       </thead>
@@ -78,10 +91,12 @@
         <tr>
           <td></td>
           <td></td>
+          <td></td>
           <td>THT :</td>
           <td><span id="tht">0</span>DHS</td>
         </tr>
         <tr>
+          <td></td>
           <td></td>
           <td></td>
           <td>TTC :</td>
@@ -97,6 +112,7 @@
       let tab_libelles = [];
       let tab_prix = [];
       let tab_qte = [];
+      let tab_photo = [];
 
       let somme_ligne = 0;
       function ajouter() {
@@ -108,6 +124,8 @@
         let span_tht = document.getElementById("tht");
         let tc = document.getElementById("tc");
         let th = document.getElementById("ht");
+        let select_photo = document.querySelector(".select_categorie");
+
         let total_ligne = 0;
         //let  ligne ="<tr> <td>"+libelle.value+"</td><td>"+prix.value+"</td><td>"+qte.value+"</td> <td>"+total_ligne+"</td></tr>";
         //alert(tab_libelles.includes(libelle.value));
@@ -121,8 +139,19 @@
         //}else{
         //B sera executé si age <= 12 OU (||) taille<=1.4
         //}
-
+        if (isNaN(qte.value) || isNaN(prix.value)) {
+          if (isNaN(qte.value)) {
+            alert("qte n'est pas un nombre  ");
+            qte.select();
+          }
+          if (isNaN(prix.value)) {
+            alert("prix  n'est pas un nombre  ");
+            prix.select();
+          }
+          return;
+        }
         console.log("tableau libelle ", tab_libelles);
+
         if (!tab_libelles.includes(libelle.value)) {
           // ajouter les libelles dans un tableau  Tab_libelle
           tab_libelles.push(libelle.value);
@@ -130,15 +159,38 @@
           tab_prix.push(prix.value);
           //ajouter les qtes dans tabl_qte
           tab_qte.push(qte.value);
+
+          //ajouter les photos
+          tab_photo.push(select_photo.value);
+        } else {
+          // trouver (son index , posi) ce produit (libelle.value) dans le tableau
+
+          // exemple : tab_libelle=['hp','sony','dell'] ; tab_prix=[3000,4000,5500], tab_qte=[2,20,10];
+          let position = -1;
+          for (let i = 0; i < tab_libelles.length; i++) {
+            //on verifie si la case en cours (i) est egale a libelle.value
+            if (tab_libelles[i] == libelle.value) {
+              //on memorise sa position dans la variable : position
+              position = i;
+            }
+          } //fin for
+          //recuperer la qte correspondant a cette position
+          //s=s+3 ou s+=3
+          tab_qte[position] = parseInt(tab_qte[position]) + parseInt(qte.value);
         }
         corps.innerHTML = "";
+        ttc = 0;
+        // "<img src="+x+" ><td> "+y+" </td>"
+        somme_ligne = 0;
         for (i = 0; i < tab_libelles.length; i++) {
           total_ligne = tab_prix[i] * tab_qte[i];
           somme_ligne += total_ligne;
           let ligne =
-            "<tr> <td>" +
+            "<tr> <td><img style='width:100px' src=" +
+            tab_photo[i] +
+            "></td><td>" +
             tab_libelles[i] +
-            "</td><td>" +
+            "<td>" +
             tab_prix[i] +
             "</td><td>" +
             tab_qte[i] +
@@ -177,9 +229,13 @@
         }
 
         // for (i in sp_all) {
+
         // i =0, 1  (indice)
+
         // console.log("for in  i : ", i);
+
         //console.log("for in contenu : ", sp_all[i]);
+
         // }
         console.log("test 1", sp1);
         console.log("test 2", sp_all);
